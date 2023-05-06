@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TopDownController : MonoBehaviour
 {
-    public Rigidbody2D body;
+    public Rigidbody body;
     public SpriteRenderer spriteRenderer;
     public float walkSpeed;
     public float frameRate;
@@ -24,6 +24,7 @@ public class TopDownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         body.velocity = direction * walkSpeed;
         HandleSpriteFlip();
@@ -41,6 +42,17 @@ public class TopDownController : MonoBehaviour
         {
             idleTime = Time.time;
         }
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            walkSpeed *= 2;
+            frameRate *= 2;
+        }
+        else if(Input.GetKeyUp(KeyCode.LeftShift))
+        {
+             walkSpeed /= 2;
+            frameRate /= 2;
+        }
+           
 
     }
    void HandleSpriteFlip()
