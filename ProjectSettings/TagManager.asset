@@ -5,11 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Safe
+  - Dot
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - bomb
   - Water
   - UI
   - 
@@ -39,6 +40,9 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: bomb
+    uniqueID: 2698901767
+    locked: 0
   - name: dot layer
     uniqueID: 2784617865
     locked: 0

@@ -4,28 +4,35 @@ using UnityEngine;
 
 public class SniperTrigger : MonoBehaviour
 {
-    private bool playerInTrigger = false;
+    
+    sniperDotBehaviour SDB;
     // Start is called before the first frame update
     void Start()
     {
         
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Awake()
     {
-        if (playerInTrigger)
+        SDB = GameObject.FindGameObjectWithTag("Dot").GetComponent<sniperDotBehaviour>();
+    }
+    // Update is called once per frame
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.CompareTag("Player"))
         {
             Debug.Log("player in sniper zone");
+            SDB.track(gameObject);
         }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        playerInTrigger = true;
+        
     }
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("player left sniper zone");
-        playerInTrigger = false;
+        if (other.CompareTag("Player")){
+            Debug.Log("player left sniper zone");
+            SDB.Reset(gameObject);
+        }
+        
+        
     }
+    
 }
