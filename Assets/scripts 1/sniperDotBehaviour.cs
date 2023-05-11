@@ -22,10 +22,10 @@ public class sniperDotBehaviour : MonoBehaviour
     public void Reset(GameObject g)
     {
         // Get a random point within a unit circle
-        Vector2 randomPoint = Random.insideUnitCircle.normalized;
+       
 
         // Set the position of the dot to a small distance away from its last position, in a random direction
-        transform.position = Vector3.Lerp(transform.position, objectToFollow.position + offset + new Vector3(randomPoint.x, randomPoint.y, 0) * 3f, 2f * Time.deltaTime);
+        transform.position = new Vector3(999, 999, 999);
     }
 
     private void OnTriggerStay2D(Collider2D other)
