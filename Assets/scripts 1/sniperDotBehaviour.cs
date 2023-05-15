@@ -7,7 +7,6 @@ public class sniperDotBehaviour : MonoBehaviour
     public Transform objectToFollow;
     public Vector3 offset;
     public float followSpeed = 50f; // The speed at which the dot should follow the player
-    playerBehaviour PB;
 
     void Start()
     {
@@ -16,7 +15,8 @@ public class sniperDotBehaviour : MonoBehaviour
 
     public void track(GameObject g)
     {
-        transform.position = Vector3.Lerp(transform.position, objectToFollow.position + offset, followSpeed * Time.deltaTime);
+        transform.position = Vector3.Lerp(transform.position, new Vector3(objectToFollow.position.x,objectToFollow.position.y,0) + offset, followSpeed * Time.deltaTime);
+       
     }
 
     public void Reset(GameObject g)
@@ -28,18 +28,7 @@ public class sniperDotBehaviour : MonoBehaviour
         transform.position = new Vector3(999, 999, 999);
     }
 
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.gameObject.tag == "Player")
-        {
-            //start Coroutine
-        }
-    }
+    
 
-    /*
-    IEnumerator coroutineA()
-    {
-        ***PB take damage***
-    }
-    */
+
 }

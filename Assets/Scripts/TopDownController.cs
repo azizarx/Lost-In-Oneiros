@@ -14,7 +14,9 @@ public class TopDownController : MonoBehaviour
     public List<Sprite> seSprites;
     public List<Sprite> sSprites;
     float idleTime;
-    
+    float Sprintbar;
+    bool isSprinting;
+
     Vector2 direction;
     void Start()
     {
@@ -24,6 +26,9 @@ public class TopDownController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+        Sprintbar = GameManager.Sprintbar;
+        isSprinting = GameManager.isSprinting;
         
         direction = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")).normalized;
         body.velocity = direction * walkSpeed;
@@ -44,12 +49,14 @@ public class TopDownController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
+            isSprinting = true;
             walkSpeed *= 2;
             frameRate *= 2;
         }
         else if(Input.GetKeyUp(KeyCode.LeftShift))
         {
-             walkSpeed /= 2;
+            isSprinting = false;
+            walkSpeed /= 2;
             frameRate /= 2;
         }
            
